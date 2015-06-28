@@ -8,6 +8,6 @@ Ext.define('CmdbuildGraph.store.Nodes', {
 
   proxy: {
     type: 'rest',
-    url: '/pcp/liste.json'
+    url: '/cmdbuild/services/rest/v1/classes/PC/cards'
   }
 });

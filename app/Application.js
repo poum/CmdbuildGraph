@@ -26,7 +26,12 @@ Ext.define('CmdbuildGraph.Application', {
       /*
        * graph image path
        */
-      graphImagePath: 'resources/'
+      graphImagePath: 'resources/',
+
+      /*
+       * CMDBuild Asset
+       */
+      CMDBuildAsset: 'PC',
     },
 
     stores: [
@@ -50,7 +55,9 @@ Ext.define('CmdbuildGraph.Application', {
         },
 
         success: function(response) {
-          console.log(response);
+	  var result = Ext.JSON.decode(response.responseText);
+          var id = result.data._id;
+          this.loadStores(id);
         },
         failure: function(response) {
           alert('oups');
@@ -58,8 +65,15 @@ Ext.define('CmdbuildGraph.Application', {
         },
         scope: this
       });
+    },
 
-      // 2. On success, loads stores
+    loadStores: function(id) {
+      var nodes = Ext.getStore('Nodes');
+	Ext.Ajax.setDefaultHeaders({ "CMDBuild-Authorization": id });
+	nodes.load(function(records, operation, success) {
+		console.log("loaded records");
+	});
+
       // 3. On success, prepare data and draw graph
     }
 });

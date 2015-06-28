@@ -51,7 +51,8 @@ Then, proceed as follow:
 
 - DONE generate app skeleton
 - DONE get session id from cmdbuild rest webservice (through CORS)
--      get node and edge data
+- DONE get node data
+-      get edge data
 -      formate data
 -      draw graph
 -      add asset selector
