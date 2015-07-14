@@ -25,6 +25,29 @@ CMDBuild web.xml configuration file: `${PATH_TO_TOMCAT}/webapps/cmdbuild/WEB-INF
   <url-pattern>/services/rest/v1/*</url-pattern>
 </filter-mapping>
 ```
+As this seem not to be sufficient, here is a way to make CMdbuildGraph work getting ride of CORS error:
+
+You have to configure Tomcat server.xml to serve your CmdbuildGrah application in the same domain, in order
+to avoid CORS errors:
+
+In Server > Service > Engine > Host tag, add:
+
+```xml
+<Host name="localhost" ...>
+
+...
+  
+<Context docBase="/var/www/" path="/cmdbg" />
+
+...
+
+</Host>
+```
+
+where docBase is a server directory where your CmbduilGraph application is accessible for tomcat user and cmdbg the name to use in URL
+(http://localhost:8080/cmdbg) to access it.
+
+Note that it should be localhost, as typed in Host tag and not 127.0.0.1 to avoid CORS error to be thrown.
 
 Then, proceed as follow:
 
