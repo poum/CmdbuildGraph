@@ -16,9 +16,9 @@ Ext.define('CmdbuildGraph.model.Edge', {
     { name: 'title',  type: 'string' }
   ],
 
-  validations: [
-    { type: 'presence', field: 'from' },
-    { type: 'presence', field: 'to' }
-  ]
+  validators: {
+    from: 'presence',
+    to:   'presence'  
+  }
 
 });

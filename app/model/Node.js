@@ -14,8 +14,8 @@ Ext.define('CmdbuildGraph.model.Node', {
     { name: 'group', type: 'string' }
   ],
 
-  validations: [
-    { type: 'presence', field: 'id' }
-  ]
+  validators: {
+    id: 'presence'    
+  }
 
 });
